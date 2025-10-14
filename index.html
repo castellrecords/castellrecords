@@ -1,227 +1,248 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Castell Records - Sello Musical de Medellín | Beats, Artistas y Nuevos Lanzamientos</title>
-    <meta name="description" content="Castell Records: Sello musical líder en Medellín, Colombia. Descubre nuestros artistas de Trap, Reggaetón y Drill, y escucha los últimos lanzamientos y beats.">
-    <link rel="icon" type="image/png" href="images/favicon.png"> 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Castell Records - Sello Musical de Medellín | Beats, Artistas y Nuevos Lanzamientos</title>
+    <meta name="description" content="Castell Records: Sello musical líder en Medellín, Colombia. Descubre nuestros artistas de Trap, Reggaetón y Drill, y escucha los últimos lanzamientos y beats.">
+    <link rel="icon" type="image/png" href="images/favicon.png"> 
 
-    <meta name="google-site-verification" content="haNPaPUR8U-RvEK4sRMin7Xtjo2t3gNQz0mgRd5Odfs" /> 
-    
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="style.css" />
+    <meta name="google-site-verification" content="haNPaPUR8U-RvEK4sRMin7Xtjo2t3gNQz0mgRd5Odfs" /> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header id="main-header">
-        <div class="logo">
-            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
-        </div>
-        <nav class="nav-menu">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="beats.html">Beats</a></li>
-                <li><a href="artistas.html">Artistas</a></li>
-                <li><a href="videos.html">Videos</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="noticias.html">Noticias</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header id="main-header">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="beats.html">Beats</a></li>
+                <li><a href="artistas.html">Artistas</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Bienvenido a Castell Records</h1>
-                <p>Productores, artistas y talento del futuro.</p>
-                <p>
-                    Para mejorar la calidad musical, Castell Records ha firmado a un importante catálogo de artistas desde su fundación en el año 2014.
-                    Los músicos que Castell Records representa no sólo le hablan a las nuevas generaciones, también a quienes tienen gustos clásicos.
-                    Con sede en Medellín, el sello se enorgullece de trabajar con los talentos musicales más brillantes.
-                </p>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bienvenido a Castell Records</h1>
+                <p>Productores, artistas y talento del futuro.</p>
+                <p>
+                    Para mejorar la calidad musical, Castell Records ha firmado a un importante catálogo de artistas desde su fundación en el año 2014.
+                    Los músicos que Castell Records representa no sólo le hablan a las nuevas generaciones, también a quienes tienen gustos clásicos.
+                    Con sede en Medellín, el sello se enorgullece de trabajar con los talentos musicales más brillantes.
+                </p>
+            </div>
+        </section>
+
+        <section id="lanzamientos" class="lanzamientos">
+            <h2>Nuevos Lanzamientos</h2>
+            <p class="sub">Descubre los últimos beats y canciones de Castell Records</p>
+
+            <div class="carousel-container">
+                <button class="carousel-btn left" id="lanzamientos-left" aria-label="Anterior">⟨</button>
+
+                <div class="carousel">
+                    <div class="card-lanzamiento">
+                        <img src="images/lanzamiento1.jpg" alt="Lanzamiento 1">
+                        <div class="card-meta">
+                            <h3>Tema 1</h3>
+                            <p class="artista">Artista 1</p>
+                            <div class="audio-control-group"> 
+                                <button class="btn-play" data-audio="audio/lanz1.mp3" preload="none" aria-label="Reproducir Tema 1">
+                                    <i class="fa-solid fa-play play-icon"></i>
+                                </button>
+                                <div class="music-bars">
+                                    <div class="bar bar1"></div>
+                                    <div class="bar bar2"></div>
+                                    <div class="bar bar3"></div>
+                                    <div class="bar bar4"></div>
+                                    <div class="bar bar5"></div>
+                                    <div class="bar bar6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-lanzamiento">
+                        <img src="images/lanzamiento2.jpg" alt="Lanzamiento 2">
+                        <div class="card-meta">
+                            <h3>Tema 2 </h3>
+                            <p class="artista">Artista 2</p>
+                            <div class="audio-control-group"> 
+                                <button class="btn-play" data-audio="audio/lanz2.mp3" preload="none" aria-label="Reproducir Tema 2">
+                                    <i class="fa-solid fa-play play-icon"></i>
+                                </button>
+                                <div class="music-bars">
+                                    <div class="bar bar1"></div>
+                                    <div class="bar bar2"></div>
+                                    <div class="bar bar3"></div>
+                                    <div class="bar bar4"></div>
+                                    <div class="bar bar5"></div>
+                                    <div class="bar bar6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-lanzamiento">
+                        <img src="images/lanzamiento3.jpg" alt="Lanzamiento 3">
+                        <div class="card-meta">
+                            <h3>Tema 3</h3>
+                            <p class="artista">Artista 3</p>
+                            <div class="audio-control-group"> 
+                                <button class="btn-play" data-audio="audio/lanz3.mp3" preload="none" aria-label="Reproducir Tema 3">
+                                    <i class="fa-solid fa-play play-icon"></i>
+                                </button>
+                                <div class="music-bars">
+                                    <div class="bar bar1"></div>
+                                    <div class="bar bar2"></div>
+                                    <div class="bar bar3"></div>
+                                    <div class="bar bar4"></div>
+                                    <div class="bar bar5"></div>
+                                    <div class="bar bar6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-lanzamiento">
+                        <img src="images/lanzamiento4.jpg" alt="Lanzamiento 4">
+                        <div class="card-meta">
+                            <h3>Tema 4</h3>
+                            <p class="artista">Artista 4</p>
+                            <div class="audio-control-group"> 
+                                <button class="btn-play" data-audio="audio/lanz4.mp3" preload="none" aria-label="Reproducir Tema 4">
+                                    <i class="fa-solid fa-play play-icon"></i>
+                                </button>
+                                <div class="music-bars">
+                                    <div class="bar bar1"></div>
+                                    <div class="bar bar2"></div>
+                                    <div class="bar bar3"></div>
+                                    <div class="bar bar4"></div>
+                                    <div class="bar bar5"></div>
+                                    <div class="bar bar6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <button class="carousel-btn right" id="lanzamientos-right" aria-label="Siguiente">⟩</button>
+            </div>
+        </section>
+
+
+        <section id="artistas" class="artistas">
+            <h2>Nuestros Artistas</h2>
+            <p class="sub">Conoce a los talentos que forman parte de Castell Records</p>
+
+            <div class="carousel-container">
+                <button class="carousel-btn left" id="artists-left" aria-label="Anterior artista">⟨</button>
+
+                <div class="carousel artists-carousel">
+                    <a href="artista1-yenilay.html" class="card-link"> 
+                        <div class="card-artista">
+                            <img src="images/artista1.jpg" alt="Artista 1">
+                            <div class="card-meta">
+                                <h3>Artista 1: YeniPlay</h3>
+                                <p>Género: Trap</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="artista2-yexon.html" class="card-link">
+                        <div class="card-artista">
+                            <img src="images/artista2.jpg" alt="Artista 2">
+                            <div class="card-meta">
+                                <h3>Artista 2: Yexon Rojas</h3>
+                                <p>Género: Reggaetón</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="artista3-siul.html" class="card-link">
+                        <div class="card-artista">
+                            <img src="images/artista3.jpg" alt="Artista 3">
+                            <div class="card-meta">
+                                <h3>Artista 3: Siul PR</h3>
+                                <p>Género: Urbano</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="artista4-yung.html" class="card-link">
+                        <div class="card-artista">
+                            <img src="images/artista4.jpg" alt="Artista 4">
+                            <div class="card-meta">
+                                <h3>Artista 4: Yung Kodhe</h3>
+                                <p>Género: Drill</p>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+
+                <button class="carousel-btn right" id="artists-right" aria-label="Siguiente artista">⟩</button>
+            </div>
+        </section>
+
+        <section id="videos" class="videos">
+            <h2>Videos de Nuestros Artistas</h2>
+            <p class="sub">Disfruta de los últimos videos musicales de Castell Records</p>
+
+            <div class="video-player-container">
+                <iframe id="video-principal" width="100%" height="500" src="https://www.youtube.com/embed/WQcMgyskmWs" title="Video Principal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="videos-collage">
+                <div class="video-mini" data-video="https://www.youtube.com/embed/zNsISO96U3c" role="button" tabindex="0" aria-label="Ver video en miniatura 1"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/nW2sQl1yZc8" role="button" tabindex="0" aria-label="Ver video en miniatura 2"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/N9HBpsUWIMM" role="button" tabindex="0" aria-label="Ver video en miniatura 3"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/JWwZdRixrCI" role="button" tabindex="0" aria-label="Ver video en miniatura 4"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/WQcMgyskmWs" role="button" tabindex="0" aria-label="Ver video en miniatura 5"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/_vmzlmKVhEQ" role="button" tabindex="0" aria-label="Ver video en miniatura 6"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/J5ZURvYkkWk" role="button" tabindex="0" aria-label="Ver video en miniatura 7"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/CC5rJa_p82E" role="button" tabindex="0" aria-label="Ver video en miniatura 8"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/OJxes3lccWE" role="button" tabindex="0" aria-label="Ver video en miniatura 9"></div>
+                <div class="video-mini" data-video="https://www.youtube.com/embed/mIzU-T379uA" role="button" tabindex="0" aria-label="Ver video en miniatura 10"></div>
+            </div>
+        </section>
+
+        <!-- Sección de Spotify Embed - Agregada a petición del usuario -->
+        <section id="spotify-embed" class="spotify-embed-section">
+            <h2>Escúchanos en Spotify</h2>
+            <p class="sub">Descubre el perfil de Castell Records y escucha a nuestros artistas</p>
+            
+            <div class="spotify-content-container">
+                <!-- IFRAME DE SPOTIFY INCORPORADO -->
+                <iframe 
+                    data-testid="embed-iframe" 
+                    style="border-radius:12px" 
+                    src="https://open.spotify.com/embed/artist/3zQ8RmZMtSXSAY7OzLe858?utm_source=generator" 
+                    width="100%" 
+                    height="352" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy">
+                </iframe>
             </div>
         </section>
 
-        <section id="lanzamientos" class="lanzamientos">
-            <h2>Nuevos Lanzamientos</h2>
-            <p class="sub">Descubre los últimos beats y canciones de Castell Records</p>
-
-            <div class="carousel-container">
-                <button class="carousel-btn left" id="lanzamientos-left" aria-label="Anterior">⟨</button>
-
-                <div class="carousel">
-                    <div class="card-lanzamiento">
-                        <img src="images/lanzamiento1.jpg" alt="Lanzamiento 1">
-                        <div class="card-meta">
-                            <h3>Tema 1</h3>
-                            <p class="artista">Artista 1</p>
-                            <div class="audio-control-group"> 
-                                <button class="btn-play" data-audio="audio/lanz1.mp3" preload="none" aria-label="Reproducir Tema 1">
-                                    <i class="fa-solid fa-play play-icon"></i>
-                                </button>
-                                <div class="music-bars">
-                                    <div class="bar bar1"></div>
-                                    <div class="bar bar2"></div>
-                                    <div class="bar bar3"></div>
-                                    <div class="bar bar4"></div>
-                                    <div class="bar bar5"></div>
-                                    <div class="bar bar6"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-lanzamiento">
-                        <img src="images/lanzamiento2.jpg" alt="Lanzamiento 2">
-                        <div class="card-meta">
-                            <h3>Tema 2 </h3>
-                            <p class="artista">Artista 2</p>
-                            <div class="audio-control-group"> 
-                                <button class="btn-play" data-audio="audio/lanz2.mp3" preload="none" aria-label="Reproducir Tema 2">
-                                    <i class="fa-solid fa-play play-icon"></i>
-                                </button>
-                                <div class="music-bars">
-                                    <div class="bar bar1"></div>
-                                    <div class="bar bar2"></div>
-                                    <div class="bar bar3"></div>
-                                    <div class="bar bar4"></div>
-                                    <div class="bar bar5"></div>
-                                    <div class="bar bar6"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-lanzamiento">
-                        <img src="images/lanzamiento3.jpg" alt="Lanzamiento 3">
-                        <div class="card-meta">
-                            <h3>Tema 3</h3>
-                            <p class="artista">Artista 3</p>
-                            <div class="audio-control-group"> 
-                                <button class="btn-play" data-audio="audio/lanz3.mp3" preload="none" aria-label="Reproducir Tema 3">
-                                    <i class="fa-solid fa-play play-icon"></i>
-                                </button>
-                                <div class="music-bars">
-                                    <div class="bar bar1"></div>
-                                    <div class="bar bar2"></div>
-                                    <div class="bar bar3"></div>
-                                    <div class="bar bar4"></div>
-                                    <div class="bar bar5"></div>
-                                    <div class="bar bar6"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-lanzamiento">
-                        <img src="images/lanzamiento4.jpg" alt="Lanzamiento 4">
-                        <div class="card-meta">
-                            <h3>Tema 4</h3>
-                            <p class="artista">Artista 4</p>
-                            <div class="audio-control-group"> 
-                                <button class="btn-play" data-audio="audio/lanz4.mp3" preload="none" aria-label="Reproducir Tema 4">
-                                    <i class="fa-solid fa-play play-icon"></i>
-                                </button>
-                                <div class="music-bars">
-                                    <div class="bar bar1"></div>
-                                    <div class="bar bar2"></div>
-                                    <div class="bar bar3"></div>
-                                    <div class="bar bar4"></div>
-                                    <div class="bar bar5"></div>
-                                    <div class="bar bar6"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-
-                <button class="carousel-btn right" id="lanzamientos-right" aria-label="Siguiente">⟩</button>
-            </div>
-        </section>
-
-
-        <section id="artistas" class="artistas">
-            <h2>Nuestros Artistas</h2>
-            <p class="sub">Conoce a los talentos que forman parte de Castell Records</p>
-
-            <div class="carousel-container">
-                <button class="carousel-btn left" id="artists-left" aria-label="Anterior artista">⟨</button>
-
-                <div class="carousel artists-carousel">
-                    <a href="artista1-yenilay.html" class="card-link"> 
-                        <div class="card-artista">
-                            <img src="images/artista1.jpg" alt="Artista 1">
-                            <div class="card-meta">
-                                <h3>Artista 1: YeniPlay</h3>
-                                <p>Género: Trap</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="artista2-yexon.html" class="card-link">
-                        <div class="card-artista">
-                            <img src="images/artista2.jpg" alt="Artista 2">
-                            <div class="card-meta">
-                                <h3>Artista 2: Yexon Rojas</h3>
-                                <p>Género: Reggaetón</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="artista3-siul.html" class="card-link">
-                        <div class="card-artista">
-                            <img src="images/artista3.jpg" alt="Artista 3">
-                            <div class="card-meta">
-                                <h3>Artista 3: Siul PR</h3>
-                                <p>Género: Urbano</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="artista4-yung.html" class="card-link">
-                        <div class="card-artista">
-                            <img src="images/artista4.jpg" alt="Artista 4">
-                            <div class="card-meta">
-                                <h3>Artista 4: Yung Kodhe</h3>
-                                <p>Género: Drill</p>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-
-                <button class="carousel-btn right" id="artists-right" aria-label="Siguiente artista">⟩</button>
-            </div>
-        </section>
-
-        <section id="videos" class="videos">
-            <h2>Videos de Nuestros Artistas</h2>
-            <p class="sub">Disfruta de los últimos videos musicales de Castell Records</p>
-
-            <div class="video-player-container">
-                <iframe id="video-principal" width="100%" height="500" src="https://www.youtube.com/embed/WQcMgyskmWs" title="Video Principal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-
-            <div class="videos-collage">
-                <div class="video-mini" data-video="https://www.youtube.com/embed/zNsISO96U3c" role="button" tabindex="0" aria-label="Ver video en miniatura 1"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/nW2sQl1yZc8" role="button" tabindex="0" aria-label="Ver video en miniatura 2"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/N9HBpsUWIMM" role="button" tabindex="0" aria-label="Ver video en miniatura 3"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/JWwZdRixrCI" role="button" tabindex="0" aria-label="Ver video en miniatura 4"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/WQcMgyskmWs" role="button" tabindex="0" aria-label="Ver video en miniatura 5"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/_vmzlmKVhEQ" role="button" tabindex="0" aria-label="Ver video en miniatura 6"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/J5ZURvYkkWk" role="button" tabindex="0" aria-label="Ver video en miniatura 7"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/CC5rJa_p82E" role="button" tabindex="0" aria-label="Ver video en miniatura 8"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/OJxes3lccWE" role="button" tabindex="0" aria-label="Ver video en miniatura 9"></div>
-                <div class="video-mini" data-video="https://www.youtube.com/embed/mIzU-T379uA" role="button" tabindex="0" aria-label="Ver video en miniatura 10"></div>
-            </div>
-        </section>
-
-    </main>
+    </main>
 
     <footer>
                 <div class="social-links">
