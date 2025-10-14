@@ -1,8 +1,3 @@
-// ===================================
-// CÓDIGO FINAL PARA script.js (TERMINADO Y CORREGIDO)
-// Incluye: Scroll Header, Carruseles Infinitos y Lógica de Audio (Doble Animación)
-// ===================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     // ====== SCROLL HEADER ======
@@ -89,56 +84,80 @@ document.addEventListener("DOMContentLoaded", () => {
     // LÓGICA DE AUDIO (PLAY/PAUSE y Animación CSS)
     // ===========================================
     const btnsPlay = document.querySelectorAll(".btn-play");
-    let currentAudio = null;
-    let currentBtn = null;
+    // Único reproductor global para manejar el estado
+    let globalAudioPlayer = new Audio(); 
+    let currentActiveBtn = null; // Botón actualmente activo (para animaciones)
 
-    // Función para detener y resetear animaciones (Quita la clase 'is-playing')
+    // Función para detener y resetear animaciones y el botón
     const stopWave = (targetBtn) => {
-        targetBtn.classList.remove('is-playing'); 
-        targetBtn.querySelector("i.fa-solid").classList.remove("fa-pause");
-        targetBtn.querySelector("i.fa-solid").classList.add("fa-play");
+        if (targetBtn) {
+            targetBtn.classList.remove('is-playing');
+            // Cambia el icono a PLAY
+            const icon = targetBtn.querySelector("i.fa-solid");
+            if (icon) {
+                icon.classList.remove("fa-pause");
+                icon.classList.add("fa-play");
+            }
+        }
     };
 
-    // Función para iniciar animaciones (Añade la clase 'is-playing')
+    // Función para iniciar animaciones y el botón
     const startWave = (targetBtn) => {
-        targetBtn.classList.add('is-playing'); 
-        targetBtn.querySelector("i.fa-solid").classList.remove("fa-play");
-        targetBtn.querySelector("i.fa-solid").classList.add("fa-pause");
+        if (targetBtn) {
+            targetBtn.classList.add('is-playing');
+            // Cambia el icono a PAUSE
+            const icon = targetBtn.querySelector("i.fa-solid");
+            if (icon) {
+                icon.classList.remove("fa-play");
+                icon.classList.add("fa-pause");
+            }
+        }
     };
 
     btnsPlay.forEach((btn) => {
         const audioSrc = btn.getAttribute("data-audio");
-        // Crea un nuevo objeto Audio por cada botón si aún no existe
-        if (!btn.audio) btn.audio = new Audio(audioSrc); 
 
         btn.addEventListener("click", () => {
             
-            // 1. Pausar el audio anterior si existe y es diferente
-            if (currentAudio && currentAudio !== btn.audio) {
-                currentAudio.pause();
-                // Detener la animación del botón anterior
-                if (currentBtn) {
-                    stopWave(currentBtn); 
-                }
+            // 1. Pausar y resetear el botón anterior si existe y no es el actual
+            if (currentActiveBtn && currentActiveBtn !== btn) {
+                globalAudioPlayer.pause();
+                stopWave(currentActiveBtn);
             }
 
-            currentAudio = btn.audio;
-            currentBtn = btn;
+            // 2. Comprobar si se está cargando o ya cargado un audio diferente
+            // Usamos endsWith para asegurar que el path sea correcto aunque la URL sea completa.
+            if (!globalAudioPlayer.src.endsWith(audioSrc)) {
+                // Nuevo audio: Asignar fuente y cargar
+                globalAudioPlayer.src = audioSrc;
+                globalAudioPlayer.load(); // Llama a load para que el navegador pida el recurso
+            }
+            
+            // 3. Tocar o pausar el audio actual
+            if (globalAudioPlayer.paused) {
+                
+                // Intenta reproducir y maneja el error (MUY IMPORTANTE)
+                globalAudioPlayer.play().then(() => {
+                    startWave(btn); // Inicia la animación SÓLO si la reproducción fue exitosa
+                    currentActiveBtn = btn;
+                }).catch(e => {
+                    // Si falla, suele ser por bloqueo de autoplay o ruta de LFS
+                    console.error("Error de reproducción de audio:", e);
+                    alert("No se pudo reproducir el audio. Puede que tu navegador esté bloqueando la reproducción automática o la ruta del archivo esté errónea. Revisa la Consola.");
+                    stopWave(btn); // Asegura que el botón se vea como 'Play'
+                });
 
-            // 2. Tocar o pausar el audio actual
-            if (currentAudio.paused) {
-                currentAudio.play().catch(e => console.error("Error al reproducir audio:", e));
-                startWave(btn); // Inicia la animación
             } else {
-                currentAudio.pause();
+                // El audio está sonando: pausar
+                globalAudioPlayer.pause();
                 stopWave(btn); // Detiene la animación
+                currentActiveBtn = null;
             }
-
-            // 3. Manejar fin de reproducción
-            currentAudio.onended = () => {
-                stopWave(btn); // Detiene la animación al finalizar
-                currentAudio = null;
-                currentBtn = null;
+            
+            // 4. Manejar fin de reproducción
+            globalAudioPlayer.onended = () => {
+                stopWave(currentActiveBtn); // Detiene la animación al finalizar
+                currentActiveBtn = null;
             };
         });
     });
