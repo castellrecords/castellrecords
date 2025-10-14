@@ -240,9 +240,9 @@ section {
 .music-bars .bar1 { animation-delay: 0s; }
 .music-bars .bar2 { animation-delay: 0.1s; }
 .music-bars .bar3 { animation-delay: 0.2s; }
-.music-bars .bar4 { animation-delay: 0.3s; } /* Nueva barra */
-.music-bars .bar5 { animation-delay: 0.4s; } /* Nueva barra */
-.music-bars .bar6 { animation-delay: 0.5s; } /* Nueva barra */
+.music-bars .bar4 { animation-delay: 0.3s; }
+.music-bars .bar5 { animation-delay: 0.4s; }
+.music-bars .bar6 { animation-delay: 0.5s; }
 
 
 /* ---------- FOOTER ---------- */
@@ -252,6 +252,30 @@ footer {
     text-align: center;
     padding: 20px;
     font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ESTILOS PARA REDES SOCIALES */
+.social-links {
+    display: flex;
+    gap: 25px;
+    margin-top: 5px;
+}
+
+.social-links a {
+    color: #fff; 
+    font-size: 1.6rem; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    padding: 5px; 
+}
+
+.social-links a:hover {
+    color: #d4af37;
+    transform: translateY(-3px) scale(1.1);
 }
 
 /* ---------- NUEVOS LANZAMIENTOS ---------- */
