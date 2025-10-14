@@ -1,0 +1,604 @@
+/* ---------- ESTILO GENERAL ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Fuente Poppins */
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+    color: #222;
+    overflow-x: hidden;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.6s ease;
+}
+
+header.scrolled {
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/* ---------- LOGO ---------- */
+.logo img {
+    height: 60px;
+    transition: all 0.5s ease;
+}
+
+/* ---------- MENÚ ---------- */
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 18px;
+    background-color: #d4af37;
+    opacity: 0.4;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #d4af37;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background-color: #f8f8f8;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #000;
+}
+
+.hero p {
+    max-width: 800px;
+    margin: 20px auto;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ---------- SECCIONES ---------- */
+section {
+    padding: 60px 20px;
+}
+
+/*
+==============================================================
+✅ BOTONES PLAY (CONFIGURACIÓN FINAL para onda de audio)
+============================================================== 
+*/
+.btn-play {
+    position: relative; 
+    background-color: #d4af37;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    z-index: 10; 
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-play i {
+    font-size: 1.2rem;
+    color: white; 
+    /* Asegura que el ícono esté por encima de la pseudo-onda */
+    z-index: 15; 
+    position: relative;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.btn-play:hover {
+    background-color: #b38f2e;
+}
+
+.btn-play:hover i {
+    transform: scale(1.2);
+    color: #fffdd0;
+}
+
+/* ---- Estilos para la Onda de Audio (COLOR MODIFICADO A NEGRO TRANSPARENTE) ---- */
+.btn-play::before {
+    content: '';
+    position: absolute;
+    /* Inicia en el mismo tamaño que el botón */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Usamos negro transparente para mayor contraste */
+    background-color: rgba(0, 0, 0, 0.4); 
+    border-radius: 50%;
+    z-index: 5; 
+    animation: none; 
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+/* Definición de la Animación de Pulso (Onda de Audio) */
+@keyframes audioPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        /* Se escala hasta 2.5 para que la onda se vea bien antes de desaparecer */
+        transform: scale(2.5); 
+        opacity: 0; 
+    }
+}
+
+/* 🏆 CLAVE: Activa la onda (::before) solo cuando el botón tiene la clase 'is-playing' */
+.btn-play.is-playing::before {
+    animation: audioPulse 1.5s infinite; 
+    opacity: 0.7;
+}
+
+/*
+==============================================================
+🚀 NUEVOS ESTILOS PARA ESPECTRO DE AUDIO DE BARRAS (AL LADO Y ANCHO)
+============================================================== 
+*/
+
+/* 1. Contenedor que alinea el botón y las barras */
+.audio-control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Reducido a 10px para que las barras tengan más espacio */
+    margin-top: 10px;
+    width: 100%; /* Asegura que ocupe todo el ancho de card-meta */
+}
+
+/* 2. Contenedor del espectro (Más ancho y Flexible) */
+.music-bars {
+    display: flex;
+    align-items: flex-end; /* Alinea las barras desde abajo */
+    
+    /* 🏆 CLAVE: Hace que ocupe todo el espacio disponible al lado del botón */
+    flex-grow: 1; 
+    
+    /* Altura máxima para la animación */
+    height: 30px; 
+    
+    overflow: hidden;
+    
+    /* 💡 CLAVE: Hacemos el espectro visible y animado siempre */
+    opacity: 1; 
+    transition: none; /* Quitamos la transición de opacidad */
+}
+
+/* 3. Estilo base de cada barra */
+.music-bars .bar {
+    width: 6px; /* Aumentamos el ancho de la barra */
+    height: 100%; /* Inicia en altura máxima para el keyframe */
+    margin: 0 1px;
+    background-color: #d4af37; /* Color dorado/amarillo */
+    border-radius: 5px;
+    transform-origin: bottom; /* La animación crece desde la base */
+    
+    /* 💡 CLAVE: Aplicamos la animación por defecto */
+    animation: danceBars 0.8s ease-in-out alternate infinite; 
+}
+
+/* 4. Muestra y anima las barras (Ya no es necesario, pero lo mantenemos para referencia) */
+/* .btn-play.is-playing + .music-bars {
+    opacity: 1;
+} */
+
+/* 5. KEYFRAMES Y DELAYS (Ajustados para 6 barras) */
+@keyframes danceBars {
+    0%, 100% {
+        transform: scaleY(0.2); /* Altura mínima (20%) */
+    }
+    50% {
+        transform: scaleY(1); /* Altura máxima (100%) */
+    }
+}
+
+/* Aplicación de la animación con diferentes delays */
+.music-bars .bar1 { animation-delay: 0s; }
+.music-bars .bar2 { animation-delay: 0.1s; }
+.music-bars .bar3 { animation-delay: 0.2s; }
+.music-bars .bar4 { animation-delay: 0.3s; } /* Nueva barra */
+.music-bars .bar5 { animation-delay: 0.4s; } /* Nueva barra */
+.music-bars .bar6 { animation-delay: 0.5s; } /* Nueva barra */
+
+
+/* ---------- FOOTER ---------- */
+footer {
+    background-color: #111;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* ---------- NUEVOS LANZAMIENTOS ---------- */
+.lanzamientos {
+    text-align: center;
+    background-color: #f7f7f7; 
+    padding: 60px 0;
+}
+
+.lanzamientos h2 {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.lanzamientos .sub {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Oculta el contenido extra (CLAVE para JS) */
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 10px; 
+}
+
+.carousel {
+    display: flex;
+    gap: 25px;
+    /* CLAVE: Desactiva el scroll nativo, el JS lo maneja */
+    overflow-x: hidden; 
+    scroll-behavior: auto;
+    scrollbar-width: none;
+    /* transition: transform 0.5s ease-in-out; (Eliminado, no necesario con scrollLeft de JS) */
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card-lanzamiento {
+    min-width: 250px; 
+    flex-shrink: 0;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 🛠️ OPTIMIZACIÓN DE Z-INDEX para la onda de audio */
+    position: relative; 
+    z-index: 1; 
+}
+
+.card-lanzamiento:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card-lanzamiento img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-meta {
+    padding: 14px;
+    text-align: left;
+}
+
+.card-meta h3 {
+    font-size: 1rem;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.card-meta .artista {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.carousel-btn {
+    position: absolute;
+    background-color: #d4af37;
+    color: #fff;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-btn:hover {
+    background-color: #b38f2e;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.left {
+    left: 10px;
+}
+
+.carousel-btn.right {
+    right: 10px;
+}
+
+/* ---------- NUESTROS ARTISTAS ---------- */
+.artistas {
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 70px 0;
+}
+
+.artistas h2 {
+    font-size: 2rem;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.artistas .sub {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.artists-carousel {
+    display: flex;
+    gap: 25px;
+    /* CLAVE: Desactiva el scroll nativo, el JS lo maneja */
+    overflow-x: hidden; 
+    scroll-behavior: auto; 
+    scrollbar-width: none;
+    /* transition: transform 0.5s ease-in-out; (Eliminado, no necesario con scrollLeft de JS) */
+}
+
+.artists-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card-link {
+    text-decoration: none; 
+    color: inherit; 
+    flex-shrink: 0;
+}
+
+.card-artista {
+    min-width: 220px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-artista:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.card-artista img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.card-meta {
+    padding: 14px;
+    text-align: left;
+}
+
+.card-meta h3 {
+    font-size: 1.1rem;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.card-meta p {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.artists-carousel a.card-link:hover .card-meta h3 {
+    text-decoration: underline; 
+    color: #d4af37; 
+}
+
+/*
+==============================================================
+ESTILOS DE VIDEOS DE YOUTUBE 
+============================================================== 
+*/
+.videos {
+    position: relative;
+    text-align: center;
+    background-color: #222;
+    padding: 60px 20px;
+    overflow: hidden;
+    color: #fff;
+    --video-bg: url('images/default-video-bg.jpg'); 
+}
+
+.videos::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: var(--video-bg); 
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) brightness(0.4); 
+    transition: background-image 0.6s ease-in-out;
+    z-index: 0; 
+}
+
+.videos > * {
+    position: relative;
+    z-index: 2; 
+}
+
+.video-player-container {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+.video-player-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 0; 
+    display: block; 
+}
+
+.videos-collage {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; 
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.video-mini {
+    flex: 0 0 22%; 
+    min-width: 180px; 
+    padding-bottom: calc(22% * (9 / 16)); 
+    height: 0; 
+    background-color: #333; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 3px solid transparent; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-mini.active,
+.video-mini:hover {
+    border-color: #d4af37; 
+    transform: scale(1.03);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.video-mini::before {
+    content: none; 
+}
+
+.video-mini img {
+    display: none; 
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 25px;
+    }
+
+    .nav-menu ul {
+        gap: 20px;
+    }
+
+    /* En móvil ocultamos los botones de carrusel y permitimos scroll natural */
+    .carousel-container {
+        padding: 0 10px;
+        overflow: hidden; 
+    }
+
+    .carousel, .artists-carousel {
+        /* Se permite scroll X nativo en móvil para accesibilidad si el JS falla o no es necesario */
+        overflow-x: auto; 
+        scroll-behavior: smooth;
+    }
+    .carousel-btn {
+        display: none; /* Ocultamos los botones manuales en móvil */
+    }
+
+    .card-lanzamiento {
+        min-width: 250px; 
+    }
+
+    .card-lanzamiento img {
+        height: 150px;
+    }
+
+    .artists-carousel {
+        gap: 15px;
+    }
+
+    .card-artista {
+        min-width: 180px;
+    }
+
+    .card-artista img {
+        height: 180px;
+    }
+    
+    /* RESPONSIVE PARA VIDEOS */
+    .videos-collage {
+        gap: 10px;
+    }
+    
+    .video-mini {
+        flex: 0 0 48%; 
+        min-width: unset;
+        padding-bottom: calc(48% * (9 / 16)); 
+    }
+
+    .video-player-container iframe {
+        height: 250px; 
+    }
+}

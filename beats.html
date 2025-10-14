@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beats | Castell Records</title>
+    <meta name="description" content="Venta de beats exclusivos y licencias de productores de Castell Records.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .beats-hero {
+            padding: 60px 20px;
+            text-align: left;
+            background-color: #f0f0f0;
+        }
+        .beats-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .beats-container h1 {
+            font-size: 2.5rem;
+            color: #d4af37;
+        }
+        .beats-container p {
+            color: #444; 
+            margin-top: 15px;
+        }
+        .catalogo {
+            margin-top: 40px; 
+            border-top: 2px solid #ddd; 
+            padding-top: 30px;
+        }
+        .catalogo h2 {
+            font-size: 1.8rem; 
+            margin-bottom: 20px;
+        }
+        .beats-list {
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            justify-content: center;
+        }
+        .beats-list .card-lanzamiento {
+            flex: 0 0 280px; 
+            text-align: center;
+        }
+        .beats-list .card-lanzamiento img {
+            height: 180px;
+        }
+        .beats-list .card-meta a.btn-comprar {
+            display: block; 
+            margin-top: 10px; 
+            text-decoration: none; 
+            padding: 8px; 
+            border-radius: 5px; 
+            font-weight: 600;
+        }
+        .beats-list .card-meta a.exclusive {
+            color: white; 
+            background-color: #000;
+        }
+        .beats-list .card-meta a.basic {
+            color: white; 
+            background-color: #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <img src="images/logo.png" alt="Castell Records Logo">
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="beats.html">Beats</a></li>
+                <li><a href="artistas.html">Artistas</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="noticias.html">Noticias</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero beats-hero">
+            <div class="beats-container">
+                <h1>Tienda de Beats Exclusivos</h1>
+                <p>
+                    ¡Bienvenido a la casa de los sonidos del futuro! Aquí encontrarás instrumentales de alta calidad 
+                    producidos por los talentos exclusivos de **Castell Records**. Ofrecemos licencias de uso no exclusivo 
+                    y exclusivas para artistas que buscan un sonido único.
+                </p>
+                
+                <div class="catalogo">
+                    <h2>Catálogo Destacado</h2>
+                    
+                    <div class="beats-list">
+                        <div class="card-lanzamiento">
+                            <img src="images/beat_trap.jpg" alt="Beat Trap">
+                            <div class="card-meta">
+                                <h3>DARK TRAP (Licencia Exclusiva)</h3>
+                                <p class="artista">Productor: YeniPlay</p>
+                                <button class="btn-play" data-audio="audio/beat_ejemplo1.mp3">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                                <a href="#" class="btn-comprar exclusive">Comprar $500 USD</a>
+                            </div>
+                        </div>
+                        
+                        <div class="card-lanzamiento">
+                            <img src="images/beat_reggaeton.jpg" alt="Beat Reggaeton">
+                            <div class="card-meta">
+                                <h3>VIBRA PERREO (Licencia No Exclusiva)</h3>
+                                <p class="artista">Productor: Yexon Rojas</p>
+                                <button class="btn-play" data-audio="audio/beat_ejemplo2.mp3">
+                                    <i class="fa-solid fa-play"></i>
+                                </button>
+                                <a href="#" class="btn-comprar basic">Licencia Básica $50 USD</a>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+
+                <p style="margin-top: 30px; text-align: center; color: #666;">
+                    Si deseas una instrumental a la medida, contáctanos en la sección de Servicios.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Castell Records. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
