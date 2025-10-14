@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // ===========================================
     // LÓGICA DE AUDIO (PLAY/PAUSE y Animación CSS)
-    // ESTA LÓGICA ES CORRECTA Y ROBUSTA CONTRA ERRORES
+    // CORRECCIÓN: Se refactorizó la lógica para evitar el 'AbortError' y manejar el Autoplay.
     // ===========================================
     const btnsPlay = document.querySelectorAll(".btn-play");
     // Único reproductor global para manejar el estado
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (targetBtn) {
             // Detener la animación
             targetBtn.querySelector('.music-bars').classList.remove('playing');
-            
+            
             // Cambia el icono a PLAY
             const icon = targetBtn.querySelector("i.fa-solid");
             if (icon) {
@@ -107,9 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función para iniciar animaciones y el botón
     const startWave = (targetBtn) => {
         if (targetBtn) {
-            // Iniciar la animación
+            // Iniciar la animación
             targetBtn.querySelector('.music-bars').classList.add('playing');
-            
+            
             // Cambia el icono a PAUSE
             const icon = targetBtn.querySelector("i.fa-solid");
             if (icon) {
@@ -118,65 +118,65 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     };
-    
-    // Manejar fin de reproducción (Se usa el evento 'ended' del reproductor)
-    globalAudioPlayer.addEventListener('ended', () => {
-        // Detiene la animación al finalizar
-        stopWave(currentActiveBtn); 
-        currentActiveBtn = null;
-    });
+    
+    // Manejar fin de reproducción (Se usa el evento 'ended' del reproductor)
+    globalAudioPlayer.addEventListener('ended', () => {
+        // Detiene la animación al finalizar
+        stopWave(currentActiveBtn); 
+        currentActiveBtn = null;
+    });
 
     btnsPlay.forEach((btn) => {
         const audioSrc = btn.getAttribute("data-audio");
 
         btn.addEventListener("click", () => {
             
-            // 1. Si el botón clickeado es el mismo que está activo (PAUSAR / RESUMIR)
-            if (currentActiveBtn === btn) {
-                
-                if (globalAudioPlayer.paused) {
-                    // RESUMIR
-                    globalAudioPlayer.play().then(() => {
-                        startWave(btn);
-                    }).catch(e => {
-                        console.error("Error al reanudar audio:", e);
-                        alert("No se pudo reanudar el audio. Revisa la Consola.");
-                    });
-                } else {
-                    // PAUSAR
-                    globalAudioPlayer.pause();
-                    stopWave(btn);
-                }
-                return; // Salir de la función después de manejar pausa/resumen
-            }
+            // 1. Si el botón clickeado es el mismo que está activo (PAUSAR / RESUMIR)
+            if (currentActiveBtn === btn) {
+                
+                if (globalAudioPlayer.paused) {
+                    // RESUMIR
+                    globalAudioPlayer.play().then(() => {
+                        startWave(btn);
+                    }).catch(e => {
+                        console.error("Error al reanudar audio:", e);
+                        alert("No se pudo reanudar el audio. Revisa la Consola.");
+                    });
+                } else {
+                    // PAUSAR
+                    globalAudioPlayer.pause();
+                    stopWave(btn);
+                }
+                return; // Salir de la función después de manejar pausa/resumen
+            }
 
-            // 2. Si es un botón diferente (CAMBIAR AUDIO)
-            
-            // Pausar y resetear el audio y botón anterior (si existe)
-            if (currentActiveBtn) {
-                globalAudioPlayer.pause();
-                stopWave(currentActiveBtn);
-            }
-            
-            // Asignar nueva fuente
-            globalAudioPlayer.src = audioSrc;
-            currentActiveBtn = btn;
-            
-            // Intentar reproducir y manejar error (CLAVE: El uso de la Promesa .play().then().catch())
-            globalAudioPlayer.play().then(() => {
-                // Reproducción exitosa
-                startWave(btn);
-            }).catch(e => {
-                // Falla de Autoplay o ruta (NotSupportedError)
-                console.error("Error de reproducción de audio:", e);
-                alert("No se pudo reproducir el audio. La causa es probablemente el bloqueo de reproducción automática del navegador. Revisa la Consola.");
-                
-                // Si falla, limpiar el estado
-                stopWave(btn); 
-                currentActiveBtn = null;
-                globalAudioPlayer.pause(); 
-                globalAudioPlayer.src = ''; // Limpiar la fuente
-            });
+            // 2. Si es un botón diferente (CAMBIAR AUDIO)
+            
+            // Pausar y resetear el audio y botón anterior (si existe)
+            if (currentActiveBtn) {
+                globalAudioPlayer.pause();
+                stopWave(currentActiveBtn);
+            }
+            
+            // Asignar nueva fuente
+            globalAudioPlayer.src = audioSrc;
+            currentActiveBtn = btn;
+            
+            // Intentar reproducir y manejar error (MUY IMPORTANTE)
+            globalAudioPlayer.play().then(() => {
+                // Reproducción exitosa
+                startWave(btn);
+            }).catch(e => {
+                // Falla de Autoplay o ruta (NotSupportedError)
+                console.error("Error de reproducción de audio:", e);
+                alert("No se pudo reproducir el audio. Puede que tu navegador esté bloqueando la reproducción automática o la ruta del archivo esté errónea. Revisa la Consola.");
+                
+                // Si falla, limpiar el estado para evitar el AbortError en clics futuros
+                stopWave(btn); 
+                currentActiveBtn = null;
+                globalAudioPlayer.pause(); 
+                globalAudioPlayer.src = ''; // Limpiar la fuente
+            });
         });
     });
 
@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Extrae el ID del video de la URL de embed
         const videoIDMatch = videoUrl.match(/\/embed\/([^/?]+)/);
-        const videoID = videoIDMatch ? videoID[1] : null; 
+        const videoID = videoIDMatch ? videoIDMatch[1] : null; 
 
         if (videoID) {
             // Establece el thumbnail de YouTube (hqdefault.jpg) como fondo de cada video mini
