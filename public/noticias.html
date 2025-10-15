@@ -3,21 +3,55 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noticias | Castell Records</title>
-    <meta name="description" content="Últimas noticias, lanzamientos y eventos de Castell Records. Mantente al día con el sello.">
+    
+    <title>Noticias y Biografía de Johan Castell | Castell Records</title>
+    <meta name="description" content="Últimas noticias, lanzamientos y eventos de Castell Records. Biografía oficial de Johan Castell, Fundador y CEO.">
+    <link rel="icon" type="image/png" href="images/favicon.png"> 
+
+    <meta name="google-site-verification" content="R1TUc8IhhDTACJAzv3UDbRBLZpNKR66tWeMEEuU4H_8" />
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <link rel="stylesheet" href="style.css" />
-    
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "URL_DE_TU_PAGINA#johan_castell", 
+          "name": "Johan Castell",
+          "birthDate": "1998-06-04",
+          "birthPlace": "Colombia",
+          "jobTitle": "Productor musical, Empresario, CEO",
+          "affiliation": {
+            "@type": "Organization",
+            "name": "Castell Records"
+          },
+          "url": "URL_DE_TU_PAGINA/johan-castell-bio.html", 
+          "description": "Productor musical, empresario y creador audiovisual colombiano, conocido por ser el fundador y director ejecutivo de Castell Records."
+        },
+        {
+          "@type": "MusicGroup",
+          "@id": "URL_DE_TU_PAGINA#castell_records",
+          "name": "Castell Records",
+          "founder": {
+            "@id": "URL_DE_TU_PAGINA#johan_castell"
+          },
+          "foundingDate": "2014"
+        }
+      ]
+    }
+    </script>
     <style>
         .news-hero {
             padding: 60px 20px;
             text-align: center;
             background-color: #f9f9f9;
         }
-        .news-container {
+        .news-container { /* Esta clase es para el contenedor principal de todos los artículos */
             max-width: 900px; 
             margin: 0 auto; 
             text-align: left;
@@ -67,11 +101,6 @@
             font-weight: 600; 
             text-decoration: none;
         }
-        .news-article:nth-child(3) h2 { /* Segundo artículo */
-            color: #000;
-            font-size: 1.5rem;
-        }
-
         /* Responsive básico para la imagen */
         @media (max-width: 768px) {
             .news-article img {
@@ -83,7 +112,7 @@
 <body>
     <header id="main-header">
         <div class="logo">
-            <img src="images/logo.png" alt="Castell Records Logo">
+            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
         <nav class="nav-menu">
             <ul>
@@ -96,9 +125,18 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <button id="auth-btn" title="Login / Publicar">
+            <i class="fas fa-user-circle"></i>
+        </button>
     </header>
 
     <main>
+        <section id="login-section" class="auth-section" style="display: none;">
+        </section>
+
+        <section id="cms-section" class="cms-section" style="display: none;">
+        </section>
+        
         <section class="hero news-hero">
             <div class="news-container">
                 <h1>Noticias de Castell Records</h1>
@@ -106,36 +144,61 @@
                     Mantente al tanto de nuestros próximos lanzamientos, firmas de artistas, eventos y más.
                 </p>
 
+                <div id="dynamic-news-container">
+                    <p id="loading-message">Cargando últimas noticias publicadas...</p>
+                </div>
+                <article class="news-article">
+                    <h2>Johan Castell: El Visionario Detrás de Castell Records</h2>
+                    <p class="date">Publicado: Biografía Oficial</p>
+                    <img src="images/johan_castell_bio.jpg" alt="Johan Castell, fundador de Castell Records">
+                    <p>
+                        **Johan Castell** (Colombia, 4 de Junio 1998) es un productor musical, empresario y creador audiovisual colombiano, conocido por ser el fundador y director ejecutivo de **Castell Records**... Reconocido por su enfoque innovador y su visión artística, Castell ha sido considerado uno de los nuevos emprendedores creativos de la industria urbana en Latinoamérica...
+                    </p>
+                    <a href="johan-castell-bio.html">Leer biografía completa →</a>
+                </article>
                 <article class="news-article">
                     <h2>¡Nuevo Contrato! Siul PR Lanza su EP "El Origen"</h2>
                     <p class="date">Publicado el 12 de Octubre de 2025</p>
                     <img src="images/noticia_siul.jpg" alt="Siul PR Nuevo EP">
                     <p>
-                        Castell Records se enorgullece en anunciar el lanzamiento del esperado Extended Play de Siul PR, 
-                        titulado "El Origen". Este EP marca un antes y un después en la carrera del artista, fusionando 
-                        sonidos urbanos con letras profundas que reflejan su trayectoria en Medellín. El álbum ya está 
-                        disponible en todas las plataformas de streaming.
+                        Castell Records se enorgullece en anunciar el lanzamiento del esperado Extended Play de Siul PR, titulado "El Origen". Este EP marca un antes y un después en la carrera del artista, fusionando sonidos urbanos con letras profundas...
                     </p>
-                    <a href="#">Leer más →</a>
+                    <a href="siul-pr-ep.html">Leer más →</a>
                 </article>
                 
                 <article class="news-article">
                     <h2>Yexon Rojas Confirma Gira de Medios</h2>
                     <p class="date">Publicado el 5 de Octubre de 2025</p>
                     <p>
-                        Nuestro artista de Reggaetón, Yexon Rojas, comenzará una gira de promoción en las principales radios 
-                        y canales de YouTube a nivel nacional. Estén atentos a las entrevistas exclusivas.
+                        Nuestro artista de Reggaetón, Yexon Rojas, comenzará una gira de promoción en las principales radios y canales de YouTube a nivel nacional. Estén atentos a las entrevistas exclusivas.
                     </p>
-                    <a href="#">Ver itinerario →</a>
+                    <a href="yexon-rojas-gira.html">Ver itinerario →</a>
                 </article>
             </div>
         </section>
     </main>
 
     <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@CastellRecords" target="_blank" aria-label="YouTube Castell Records">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/CastellEmpire" target="_blank" aria-label="Facebook Castell Empire">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/castellrecords/" target="_blank" aria-label="Instagram Castell Records">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/castellrecords/" target="_blank" aria-label="LinkedIn Castell Records">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.tiktok.com/@castellrecords0" target="_blank" aria-label="TikTok Castell Records">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
         <p>© 2025 Castell Records. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

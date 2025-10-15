@@ -275,15 +275,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const newsTitle = document.getElementById('news-title');
     const newsContent = document.getElementById('news-content');
     const cmsMessage = document.getElementById('cms-message');
-    const newsContainer = document.getElementById('news-container');
+
+    // ** CORRECCIÓN CLAVE: APUNTAR AL CONTENEDOR DE NOTICIAS DINÁMICAS **
+    const dynamicNewsContainer = document.getElementById('dynamic-news-container');
     const loadingMessage = document.getElementById('loading-message');
 
 
     // --- 2. Función para renderizar noticias desde Firestore ---
     const renderNews = async () => {
+        // ** CORRECCIÓN CLAVE: Si no existe el contenedor dinámico (ej. estamos en index.html), salimos. **
+        if (!dynamicNewsContainer) return;
+
         // Muestra el mensaje de carga
         if(loadingMessage) loadingMessage.style.display = 'block';
-        if(newsContainer) newsContainer.innerHTML = ''; 
+        dynamicNewsContainer.innerHTML = ''; 
 
         try {
             const noticiasCollection = collection(db, "noticias");
@@ -295,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(loadingMessage) loadingMessage.style.display = 'none';
 
             if (snapshot.empty) {
-                newsContainer.innerHTML = '<p class="no-news-message">Aún no hay noticias publicadas.</p>';
+                dynamicNewsContainer.innerHTML = '<p class="no-news-message">Aún no hay noticias publicadas.</p>';
                 return;
             }
 
@@ -313,19 +318,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const formattedContent = data.content.replace(/\n/g, '<br>');
 
                 htmlContent += `
-                    <article class="news-card">
+                    <article class="news-article">
                         <h3>${data.title}</h3>
-                        <p class="news-date">Publicado el: ${date}</p>
+                        <p class="date">Publicado el: ${date}</p>
                         <p>${formattedContent}</p>
                     </article>
                 `;
             });
 
-            if(newsContainer) newsContainer.innerHTML = htmlContent;
+            dynamicNewsContainer.innerHTML = htmlContent;
 
         } catch (error) {
             console.error("Error al cargar las noticias:", error);
-            if(newsContainer) newsContainer.innerHTML = '<p class="error-message" style="color: red;">Error al cargar las noticias. Revisa la Consola.</p>';
+            dynamicNewsContainer.innerHTML = '<p class="error-message" style="color: red;">Error al cargar las noticias. Revisa la Consola.</p>';
         }
     };
 
@@ -333,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- 3. Manejo de Autenticación (Cambio de estado de usuario) ---
     // Esta función se ejecuta CADA VEZ que el estado de login cambia (al entrar, salir, o cargar la página)
     onAuthStateChanged(auth, (user) => {
-        // Referencia adicional para el feed público (fuera del CMS)
+        // Referencia para el feed público de index.html (si existe)
         const noticiasFeed = document.getElementById('noticias-feed');
         
         if (user) {
@@ -342,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(loginSection) loginSection.style.display = 'none';
             if(cmsSection) cmsSection.style.display = 'block';
             
-            // Ocultar el feed de noticias duplicado para que el CMS ocupe el espacio
+            // Ocultar el feed de noticias duplicado en Index (si existe)
             if(noticiasFeed) noticiasFeed.style.display = 'none';
 
         } else {
@@ -351,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(loginSection) loginSection.style.display = 'none';
             if(cmsSection) cmsSection.style.display = 'none';
             
-            // Mostrar el feed de noticias para el público
+            // Mostrar el feed de noticias para el público en Index (si existe)
             if(noticiasFeed) noticiasFeed.style.display = 'block';
         }
     });
@@ -454,10 +459,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Validación simple
             if (title.trim() === '' || content.trim() === '') {
-                 cmsMessage.textContent = '❌ Por favor, completa el título y el contenido.';
-                 cmsMessage.style.color = 'red';
-                 setTimeout(() => cmsMessage.style.display = 'none', 3000);
-                 return;
+                   cmsMessage.textContent = '❌ Por favor, completa el título y el contenido.';
+                   cmsMessage.style.color = 'red';
+                   setTimeout(() => cmsMessage.style.display = 'none', 3000);
+                   return;
             }
 
             try {
@@ -496,6 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- 8. Llamada inicial para cargar las noticias ---
     // Esta es la primera acción de Firebase: Cargar y mostrar las noticias existentes.
+    // La función renderNews ahora solo se ejecutará si encuentra el #dynamic-news-container (es decir, en noticias.html)
     renderNews();
 
 
