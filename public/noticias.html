@@ -116,6 +116,11 @@
         <div class="logo">
             <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
+        
+        <button id="menu-toggle" class="hamburger-btn" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars"></i> 
+        </button> 
+        
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -134,11 +139,25 @@
 
     <main>
         <section id="login-section" class="auth-section" style="display: none;">
+            <h2>Acceso de Secretaria</h2>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Correo electrónico" required>
+                <input type="password" id="login-password" placeholder="Contraseña" required>
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                <p id="login-error" class="error-message" style="display: none; color: red;"></p>
+            </form>
         </section>
 
         <section id="cms-section" class="cms-section" style="display: none;">
+            <h2>Publicar Nueva Noticia</h2>
+            <form id="news-form">
+                <input type="text" id="news-title" placeholder="Título de la Noticia" required>
+                <textarea id="news-content" placeholder="Contenido de la Noticia" required></textarea>
+                <button type="submit" class="btn-primary">Publicar</button>
+                <p id="cms-message" style="display: none; color: green;"></p>
+            </form>
+            <button id="cms-logout-btn" class="btn-secondary">Cerrar Sesión</button>
         </section>
-        
         <section class="hero news-hero">
             <div class="news-container">
                 <h1>Noticias de Castell Records</h1>
@@ -148,34 +167,36 @@
 
                 <div id="dynamic-news-container">
                     <p id="loading-message">Cargando últimas noticias publicadas...</p>
-                </div>
-                <article class="news-article">
-                    <h2>Johan Castell: El Visionario Detrás de Castell Records</h2>
-                    <p class="date">Publicado: Biografía Oficial</p>
-                    <img src="images/johan_castell_bio.jpg" alt="Johan Castell, fundador de Castell Records">
-                    <p>
-                        **Johan Castell** (Colombia, 4 de Junio 1998) es un productor musical, empresario y creador audiovisual colombiano, conocido por ser el fundador y director ejecutivo de **Castell Records**... Reconocido por su enfoque innovador y su visión artística, Castell ha sido considerado uno de los nuevos emprendedores creativos de la industria urbana en Latinoamérica...
-                    </p>
-                    <a href="johan-castell-bio.html">Leer biografía completa →</a>
-                </article>
-                <article class="news-article">
-                    <h2>¡Nuevo Contrato! Siul PR Lanza su EP "El Origen"</h2>
-                    <p class="date">Publicado el 12 de Octubre de 2025</p>
-                    <img src="images/noticia_siul.jpg" alt="Siul PR Nuevo EP">
-                    <p>
-                        Castell Records se enorgullece en anunciar el lanzamiento del esperado Extended Play de Siul PR, titulado "El Origen". Este EP marca un antes y un después en la carrera del artista, fusionando sonidos urbanos con letras profundas...
-                    </p>
-                    <a href="siul-pr-ep.html">Leer más →</a>
-                </article>
-                
-                <article class="news-article">
-                    <h2>Yexon Rojas Confirma Gira de Medios</h2>
-                    <p class="date">Publicado el 5 de Octubre de 2025</p>
-                    <p>
-                        Nuestro artista de Reggaetón, Yexon Rojas, comenzará una gira de promoción en las principales radios y canales de YouTube a nivel nacional. Estén atentos a las entrevistas exclusivas.
-                    </p>
-                    <a href="yexon-rojas-gira.html">Ver itinerario →</a>
-                </article>
+                    </div>
+                <section class="static-articles">
+                    <article class="news-article">
+                        <h2>Johan Castell: El Visionario Detrás de Castell Records</h2>
+                        <p class="date">Publicado: Biografía Oficial</p>
+                        <img src="images/johan_castell_bio.jpg" alt="Johan Castell, fundador de Castell Records">
+                        <p>
+                            **Johan Castell** (Colombia, 4 de Junio 1998) es un productor musical, empresario y creador audiovisual colombiano, conocido por ser el fundador y director ejecutivo de **Castell Records**... Reconocido por su enfoque innovador y su visión artística, Castell ha sido considerado uno de los nuevos emprendedores creativos de la industria urbana en Latinoamérica...
+                        </p>
+                        <a href="johan-castell-bio.html">Leer biografía completa →</a>
+                    </article>
+                    <article class="news-article">
+                        <h2>¡Nuevo Contrato! Siul PR Lanza su EP "El Origen"</h2>
+                        <p class="date">Publicado el 12 de Octubre de 2025</p>
+                        <img src="images/noticia_siul.jpg" alt="Siul PR Nuevo EP">
+                        <p>
+                            Castell Records se enorgullece en anunciar el lanzamiento del esperado Extended Play de Siul PR, titulado "El Origen". Este EP marca un antes y un después en la carrera del artista, fusionando sonidos urbanos con letras profundas...
+                        </p>
+                        <a href="siul-pr-ep.html">Leer más →</a>
+                    </article>
+                    
+                    <article class="news-article">
+                        <h2>Yexon Rojas Confirma Gira de Medios</h2>
+                        <p class="date">Publicado el 5 de Octubre de 2025</p>
+                        <p>
+                            Nuestro artista de Reggaetón, Yexon Rojas, comenzará una gira de promoción en las principales radios y canales de YouTube a nivel nacional. Estén atentos a las entrevistas exclusivas.
+                        </p>
+                        <a href="yexon-rojas-gira.html">Ver itinerario →</a>
+                    </article>
+                </section>
             </div>
         </section>
     </main>

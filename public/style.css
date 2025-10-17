@@ -39,6 +39,23 @@ header.scrolled {
     transition: all 0.5s ease;
 }
 
+/*
+==============================================================
+✅ NUEVO: BOTÓN HAMBURGUESA (Por defecto OCULTO en PC)
+============================================================== 
+*/
+#menu-toggle {
+    display: none; /* CLAVE: Oculto en escritorio para que no mueva el menú */
+    background: none;
+    border: none;
+    color: #111; /* Color del icono */
+    font-size: 1.6rem; 
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Alto z-index para que esté sobre el menú */
+    order: 2; /* Para control de la posición en el flexbox del header */
+}
+
 /* ---------- MENÚ ---------- */
 .nav-menu ul {
     display: flex;
@@ -578,7 +595,7 @@ ESTILOS DE VIDEOS DE YOUTUBE
     border: 1px solid #ccc;
     background-color: #fff;
     color: #222;
-    border-radius: 4px;
+    border-radius: 44px;
     font-size: 1em;
     resize: vertical; 
 }
@@ -744,99 +761,165 @@ ESTILOS DE VIDEOS DE YOUTUBE
 }
 
 
-/* ---------- RESPONSIVE ---------- */
+/*
+==============================================================
+>>>>> ADAPTACIÓN MÓVIL (Reglas de responsive) <<<<<
+============================================================== 
+*/
 @media (max-width: 768px) {
+    /* 1. HEADER y MENÚ de NAVEGACIÓN (Estructura de Menú Móvil) */
+    
     header {
-        padding: 15px 15px;
+        padding: 15px 20px;
+    }
+    
+    .logo img {
+        height: 45px;
+    }
+
+    /* 🏆 CLAVE: MOSTRAR el botón de hamburguesa en móvil */
+    #menu-toggle {
+        display: block; 
+    }
+
+    /* Ocultar el menú de escritorio y transformarlo en un menú lateral */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95); /* Overlay oscuro */
+        z-index: 999;
+        transform: translateX(100%); /* Oculto fuera de la pantalla */
+        transition: transform 0.4s ease-in-out;
+        /* NOTA: No necesita 'display: none' aquí porque 'transform: translateX(100%)' 
+           y 'position: fixed' lo sacan del flujo. */
+        display: block; 
+    }
+
+    /* CLAVE PARA JS: Estilo para menú ABIERTO (se activa con la clase .active) */
+    .nav-menu.active {
+        transform: translateX(0); /* Visible */
     }
 
     .nav-menu ul {
-        gap: 15px;
-        margin-right: -15px;
-    }
-
-    .nav-menu li:not(:last-child)::after {
-        right: -7px; 
-        height: 15px;
+        flex-direction: column; /* Lista vertical */
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin-right: 0;
+        padding-top: 0; 
+        gap: 40px; /* Más espacio entre enlaces para facilitar el toque */
     }
     
+    .nav-menu li:not(:last-child)::after {
+        display: none; /* Eliminar el separador vertical en móvil */
+    }
+
+    .nav-menu a {
+        font-size: 1.6rem;
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 1px;
+    }
+
+    /* Botón de Login/Publicar: Siempre visible y con más tamaño */
     #auth-btn {
-        font-size: 0.9rem; 
+        z-index: 1001; 
+        font-size: 1.8rem;
         margin-left: 10px;
     }
 
-    /* Carruseles */
+    /* 2. AJUSTES GENERALES */
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    /* 3. CARRUSELES (Lanzamientos y Artistas) */
+    
     .carousel-container {
-        padding: 0; 
+        padding: 0;
     }
 
     .carousel, .artists-carousel {
-        overflow-x: scroll; 
         scroll-behavior: smooth;
         flex-wrap: nowrap; 
-        padding: 0 15px 20px 15px;
+        padding: 0 15px 20px 15px; /* Padding horizontal para centrar el primer elemento y permitir el drag */
+        gap: 20px;
     }
     
     .carousel-btn {
-        display: none; 
+        display: none; /* Ocultamos las flechas grandes en móvil, confiando en el scroll del dedo */
     }
 
     .card-lanzamiento {
         min-width: 250px; 
     }
 
-    .card-lanzamiento img {
-        height: 140px;
-    }
-
-    .artists-carousel {
-        gap: 15px;
-    }
-
     .card-artista {
-        min-width: 160px;
+        min-width: 180px;
     }
 
-    .card-artista img {
-        height: 160px;
-    }
-    
-    /* RESPONSIVE PARA VIDEOS */
-    .videos-collage {
-        gap: 10px;
-    }
-    
-    .video-mini {
-        flex: 0 0 48%; 
-        min-width: unset;
-        padding-bottom: calc(48% * (9 / 16)); 
-    }
-
-    .video-mini::after {
-        font-size: 2rem;
-    }
-
+    /* 4. SECCIÓN DE VIDEOS */
     .video-player-container iframe {
         height: 250px; 
     }
+    
+    .videos-collage {
+        gap: 15px;
+    }
+    
+    .video-mini {
+        flex: 0 0 45%; /* Dos columnas por fila */
+        padding-bottom: calc(45% * (9 / 16)); /* Mantenemos la relación de aspecto 16:9 */
+        min-width: unset;
+    }
 
-    /* RESPONSIVE CMS */
+    .video-mini::after {
+        font-size: 2.5rem;
+    }
+
+    /* 5. CMS/LOGIN */
     #login-section, 
     #cms-section {
         position: fixed; 
         top: 80px;
-        right: 2%;
-        left: 2%; 
-        width: 96%;
+        right: 5%;
+        left: 5%; 
+        width: 90%;
         max-width: none;
     }
-    
+
+    /* 6. NOTICIAS */
     #noticias-feed {
         padding: 40px 15px;
     }
 
     .news-container {
         grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+}
+
+
+/* Adaptación extra para móviles más pequeños (ej. pantallas de 4 pulgadas) */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .video-player-container iframe {
+        height: 200px;
+    }
+
+    /* Videos - una sola columna para pantallas muy estrechas */
+    .video-mini {
+        flex: 0 0 100%; 
+        padding-bottom: calc(100% * (9 / 16));
     }
 }
 

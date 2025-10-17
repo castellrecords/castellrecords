@@ -74,7 +74,7 @@
             border: 1px solid #ccc;
             border-radius: 6px;
             font-family: 'Poppins', sans-serif;
-            box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
+            box-sizing: border-box; 
         }
         .contact-form textarea {
             resize: vertical;
@@ -94,11 +94,10 @@
         .contact-form button:hover {
             background-color: #b38f2e;
         }
-        /* Estilos de redes sociales en Contacto (se pueden dejar los del footer o usar estos) */
+        /* Estilos de redes sociales en Contacto */
         .contact-social a {
             font-size: 2rem;
             margin-right: 15px;
-            /* Aquí podrías definir colores específicos si quieres que sean diferentes al footer */
         }
         .contact-social .fa-facebook-square { color: #4267B2; }
         .contact-social .fa-instagram { color: #C13584; }
@@ -117,6 +116,11 @@
         <div class="logo">
             <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
+        
+        <button id="menu-toggle" class="hamburger-btn" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars"></i> 
+        </button>
+        
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
