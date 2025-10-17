@@ -6,58 +6,143 @@
     <title>Biografía | Siul PR</title>
     <meta name="description" content="Biografía, música y trayectoria de Siul PR, artista de Fusión Urbana en Castell Records.">
     
+    <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48"> 
+    <link rel="shortcut icon" href="images/favicon.ico">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        .artist-bio {
+            padding: 60px 20px; 
+            background-color: #222; 
+            color: white;
+        }
+        .artist-container {
+            max-width: 1000px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 40px;
+        }
+        .artist-sidebar {
+            flex: 1; 
+            min-width: 300px; 
+            text-align: center;
+        }
+        .artist-sidebar img {
+            width: 100%; 
+            max-width: 350px; 
+            height: auto; 
+            object-fit: cover; 
+            border-radius: 10px; 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .artist-sidebar h2 {
+            font-size: 2.5rem; 
+            margin-top: 20px; 
+            color: #d4af37;
+        }
+        .artist-sidebar p {
+            margin-bottom: 20px; 
+            font-style: italic;
+        }
+        .artist-social {
+            font-size: 1.8rem;
+        }
+        .artist-social a {
+            margin-right: 15px; 
+            text-decoration: none;
+        }
+        .artist-social .fa-instagram { color: #fff; }
+        .artist-social .fa-youtube { color: #FF0000; }
+        .artist-social .fa-spotify { color: #1DB954; }
+
+        .artist-main-content {
+            flex: 2; 
+            min-width: 400px; 
+            line-height: 1.8;
+        }
+        .artist-main-content h3 {
+            font-size: 1.8rem; 
+            margin-bottom: 15px;
+        }
+        .artist-main-content p {
+            margin-bottom: 20px;
+        }
+        .btn-back-gallery {
+            display: inline-block; 
+            margin-top: 20px; 
+            background-color: #d4af37; 
+            color: #222; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: background-color 0.3s;
+        }
+        .btn-back-gallery:hover {
+             background-color: #ffc107;
+        }
+    </style>
 </head>
 <body>
+    
     <header id="main-header">
         <div class="logo">
-            <img src="images/logo.png" alt="Castell Records Logo">
+            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
         <nav class="nav-menu">
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="beats.html">Beats</a></li>
                 <li><a href="artistas.html">Artistas</a></li>
-                <li><a href="videos.html">Videos</a></li> <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
                 <li><a href="noticias.html">Noticias</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <button id="auth-btn" title="Login / Publicar">
+            <i class="fas fa-user-circle"></i>
+        </button>
     </header>
 
     <main>
-        <section class="artist-bio" style="padding: 60px 20px; background-color: #222; color: white;">
-            <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px;">
-                
-                <div style="flex: 1; min-width: 300px; text-align: center;">
-                    <img src="images/artista3.jpg" alt="Siul PR" style="width: 100%; max-width: 350px; height: auto; object-fit: cover; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);">
-                    <h2 style="font-size: 2.5rem; margin-top: 20px; color: #d4af37;">Siul PR</h2>
-                    <p style="margin-bottom: 20px; font-style: italic;">Fusión, Liricismo y Ritmo</p>
+        <section id="login-section" class="auth-section" style="display: none;"></section>
+        <section id="cms-section" class="cms-section" style="display: none;"></section>
 
-                    <div style="font-size: 1.8rem;">
-                        <a href="#" style="color: #fff; margin-right: 15px; text-decoration: none;"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@SiulOficial" target="_blank" rel="noopener noreferrer" style="color: #FF0000; margin-right: 15px; text-decoration: none;"><i class="fab fa-youtube"></i></a>
-                        <a href="https://open.spotify.com/intl-es/artist/1W8nxiGfkeEYDdMdzpTV4M?si=Dz5dmaLsRpG2KDv6T-rMIw" target="_blank" rel="noopener noreferrer" style="color: #1DB954; text-decoration: none;"><i class="fab fa-spotify"></i></a>
+        <section class="artist-bio">
+            <div class="artist-container">
+                
+                <div class="artist-sidebar">
+                    <img src="images/artista3.jpg" alt="Siul PR">
+                    <h2>Siul PR</h2>
+                    <p>Fusión, Liricismo y Ritmo</p>
+
+                    <div class="artist-social">
+                        <a href="#" aria-label="Instagram Siul PR"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@SiulOficial" target="_blank" rel="noopener noreferrer" aria-label="YouTube Siul PR"><i class="fab fa-youtube"></i></a>
+                        <a href="https://open.spotify.com/intl-es/artist/1W8nxiGfkeEYDdMdzpTV4M?si=Dz5dmaLsRpG2KDv6T-rMIw" target="_blank" rel="noopener noreferrer" aria-label="Spotify Siul PR"><i class="fab fa-spotify"></i></a>
                     </div>
                 </div>
                 
-                <div style="flex: 2; min-width: 400px; line-height: 1.8;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Biografía</h3>
-                    <p style="margin-bottom: 20px;">
+                <div class="artist-main-content">
+                    <h3>Biografía</h3>
+                    <p>
                         **Siul PR** es el camaleón musical de Castell Records. Su estilo es una rica fusión de ritmos urbanos, 
                         desde el R&B hasta el Hip-Hop clásico, con una notable habilidad para la composición lírica. 
                         Originario de Puerto Rico (de ahí su nombre artístico), trajo su energía y talento al sello en Medellín.
                     </p>
-                    <p style="margin-bottom: 20px;">
+                    <p>
                         Más allá de la música de radio, Siul PR es un narrador de historias. Su EP más reciente, 
-                        "Dawn" (mencionado en las noticias), ha sido aclamado por la crítica por su cohesión temática 
+                        "**Dawn**" (mencionado en las noticias), ha sido aclamado por la crítica por su cohesión temática 
                         y la madurez de su producción. Siul se encuentra en constante búsqueda de innovar el sonido latino.
                     </p>
                     
-                    <a href="artistas.html" style="display: inline-block; margin-top: 20px; background-color: #d4af37; color: #222; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s;">
+                    <a href="artistas.html" class="btn-back-gallery">
                         ← Volver a la Galería de Artistas
                     </a>
                 </div>
@@ -66,9 +151,26 @@
     </main>
 
     <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@CastellRecords" target="_blank" aria-label="YouTube Castell Records">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/CastellEmpire" target="_blank" aria-label="Facebook Castell Empire">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/castellrecords/" target="_blank" aria-label="Instagram Castell Records">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/castellrecords/" target="_blank" aria-label="LinkedIn Castell Records">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.tiktok.com/@castellrecords0" target="_blank" aria-label="TikTok Castell Records">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
         <p>© 2025 Castell Records. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

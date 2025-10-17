@@ -6,15 +6,80 @@
     <title>Servicios | Castell Records</title>
     <meta name="description" content="Servicios de producción musical, mezcla, masterización y booking de Castell Records.">
     
+    <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48"> 
+    <link rel="shortcut icon" href="images/favicon.ico">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <link rel="stylesheet" href="style.css" />
+    
+    <style>
+        .service-hero {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        .service-hero h1 {
+            font-size: 2.5rem; 
+            color: #000;
+        }
+        .service-hero p {
+            color: #666; 
+            margin-top: 15px; 
+            margin-bottom: 40px;
+        }
+        .services-grid {
+            max-width: 1000px; 
+            margin: 0 auto; 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 30px;
+        }
+        .service-card {
+            flex: 0 0 300px; 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08); 
+            text-align: left; 
+            border-top: 4px solid #d4af37;
+        }
+        .service-card i {
+            font-size: 2rem; 
+            color: #d4af37; 
+            margin-bottom: 15px;
+        }
+        .service-card h3 {
+            font-size: 1.3rem; 
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            color: #555; 
+            line-height: 1.6;
+        }
+        .btn-cotizacion {
+            display: inline-block; 
+            margin-top: 50px; 
+            background-color: #000; 
+            color: white; 
+            padding: 12px 30px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: background-color 0.3s;
+        }
+        .btn-cotizacion:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
 <body>
+    
     <header id="main-header">
         <div class="logo">
-            <img src="images/logo.png" alt="Castell Records Logo">
+            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
         <nav class="nav-menu">
             <ul>
@@ -27,44 +92,51 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <button id="auth-btn" title="Login / Publicar">
+            <i class="fas fa-user-circle"></i>
+        </button>
     </header>
 
     <main>
-        <section class="hero" style="padding: 60px 20px; text-align: center; background-color: #f0f0f0;">
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <h1 style="font-size: 2.5rem; color: #000;">Nuestros Servicios Profesionales</h1>
-                <p style="color: #666; margin-top: 15px; margin-bottom: 40px;">
+        <section id="login-section" class="auth-section" style="display: none;"></section>
+        <section id="cms-section" class="cms-section" style="display: none;"></section>
+
+        <section class="hero service-hero">
+            <div class="services-grid">
+                
+                <h1>Nuestros Servicios Profesionales</h1>
+                <p>
                     Castell Records ofrece soluciones completas para artistas, desde la conceptualización hasta el lanzamiento final.
                 </p>
                 
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+                <div class="services-grid">
                     
-                    <div style="flex: 0 0 300px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); text-align: left; border-top: 4px solid #d4af37;">
-                        <i class="fa-solid fa-microphone-alt" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Producción Ejecutiva</h3>
-                        <p style="color: #555; line-height: 1.6;">
+                    <div class="service-card">
+                        <i class="fa-solid fa-microphone-alt"></i>
+                        <h3>Producción Ejecutiva</h3>
+                        <p>
                             Desarrollo completo de tu proyecto musical, incluyendo creación de concepto, dirección de sonido y gestión de presupuesto.
                         </p>
                     </div>
 
-                    <div style="flex: 0 0 300px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); text-align: left; border-top: 4px solid #d4af37;">
-                        <i class="fa-solid fa-sliders-h" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Mezcla y Masterización</h3>
-                        <p style="color: #555; line-height: 1.6;">
+                    <div class="service-card">
+                        <i class="fa-solid fa-sliders-h"></i>
+                        <h3>Mezcla y Masterización</h3>
+                        <p>
                             Lleva tu canción al nivel de la industria con nuestros ingenieros certificados. Sonido limpio, potente y listo para plataformas.
                         </p>
                     </div>
 
-                    <div style="flex: 0 0 300px; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.08); text-align: left; border-top: 4px solid #d4af37;">
-                        <i class="fa-solid fa-calendar-alt" style="font-size: 2rem; color: #d4af37; margin-bottom: 15px;"></i>
-                        <h3 style="font-size: 1.3rem; margin-bottom: 10px;">Booking y Management</h3>
-                        <p style="color: #555; line-height: 1.6;">
+                    <div class="service-card">
+                        <i class="fa-solid fa-calendar-alt"></i>
+                        <h3>Booking y Management</h3>
+                        <p>
                             Gestión de contratos, coordinación de eventos y desarrollo de la imagen pública del artista.
                         </p>
                     </div>
                 </div>
 
-                <a href="contacto.html" style="display: inline-block; margin-top: 50px; background-color: #000; color: white; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background-color 0.3s;">
+                <a href="contacto.html" class="btn-cotizacion">
                     Solicita una Cotización
                 </a>
             </div>
@@ -72,9 +144,26 @@
     </main>
 
     <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@CastellRecords" target="_blank" aria-label="YouTube Castell Records">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/CastellEmpire" target="_blank" aria-label="Facebook Castell Empire">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/castellrecords/" target="_blank" aria-label="Instagram Castell Records">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/castellrecords/" target="_blank" aria-label="LinkedIn Castell Records">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.tiktok.com/@castellrecords0" target="_blank" aria-label="TikTok Castell Records">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
         <p>© 2025 Castell Records. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

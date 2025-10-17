@@ -72,9 +72,10 @@
     </style>
 </head>
 <body>
+    
     <header id="main-header">
         <div class="logo">
-            <img src="images/logo.png" alt="Castell Records Logo">
+            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
         <nav class="nav-menu">
             <ul>
@@ -87,9 +88,15 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <button id="auth-btn" title="Login / Publicar">
+            <i class="fas fa-user-circle"></i>
+        </button>
     </header>
 
     <main>
+        <section id="login-section" class="auth-section" style="display: none;"></section>
+        <section id="cms-section" class="cms-section" style="display: none;"></section>
+
         <section class="hero beats-hero">
             <div class="beats-container">
                 <h1>Tienda de Beats Exclusivos</h1>
@@ -107,7 +114,7 @@
                             <img src="images/beat_trap.jpg" alt="Beat Trap">
                             <div class="card-meta">
                                 <h3>DARK TRAP (Licencia Exclusiva)</h3>
-                                <p class="artista">Productor: YeniPlay</p>
+                                <p class="artista">Productor: Johan Castell</p>
                                 <button class="btn-play" data-audio="audio/beat_ejemplo1.mp3">
                                     <i class="fa-solid fa-play"></i>
                                 </button>
@@ -119,14 +126,14 @@
                             <img src="images/beat_reggaeton.jpg" alt="Beat Reggaeton">
                             <div class="card-meta">
                                 <h3>VIBRA PERREO (Licencia No Exclusiva)</h3>
-                                <p class="artista">Productor: Yexon Rojas</p>
+                                <p class="artista">Productor: SOG</p>
                                 <button class="btn-play" data-audio="audio/beat_ejemplo2.mp3">
                                     <i class="fa-solid fa-play"></i>
                                 </button>
                                 <a href="#" class="btn-comprar basic">Licencia Básica $50 USD</a>
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
 
                 <p style="margin-top: 30px; text-align: center; color: #666;">
@@ -137,9 +144,26 @@
     </main>
 
     <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@CastellRecords" target="_blank" aria-label="YouTube Castell Records">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/CastellEmpire" target="_blank" aria-label="Facebook Castell Empire">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/castellrecords/" target="_blank" aria-label="Instagram Castell Records">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/castellrecords/" target="_blank" aria-label="LinkedIn Castell Records">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.tiktok.com/@castellrecords0" target="_blank" aria-label="TikTok Castell Records">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
         <p>© 2025 Castell Records. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

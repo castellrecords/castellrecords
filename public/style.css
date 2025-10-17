@@ -839,3 +839,134 @@ ESTILOS DE VIDEOS DE YOUTUBE
         grid-template-columns: 1fr; /* Una columna en móvil */
     }
 }
+
+/*
+==============================================================
+>>>>> ESTILOS ESPECÍFICOS DE MINIATURAS DE VIDEOS <<<<<
+============================================================== 
+*/
+
+/* Para que las miniaturas muestren la imagen de YouTube, 
+usamos el ID del video dentro del atributo data-video 
+y la función url() para el background-image. 
+La estructura del URL de thumbnail de YouTube es:
+https://img.youtube.com/vi/[VIDEO_ID]/mqdefault.jpg 
+*/
+
+
+/* Video 1: zNsISO96U3c */
+.videos-collage .video-mini[data-video*="zNsISO96U3c"] {
+    background-image: url('https://img.youtube.com/vi/zNsISO96U3c/mqdefault.jpg');
+}
+
+/* Video 2: nW2sQl1yZc8 */
+.videos-collage .video-mini[data-video*="nW2sQl1yZc8"] {
+    background-image: url('https://img.youtube.com/vi/nW2sQl1yZc8/mqdefault.jpg');
+}
+
+/* Video 3: N9HBpsUWIMM */
+.videos-collage .video-mini[data-video*="N9HBpsUWIMM"] {
+    background-image: url('https://img.youtube.com/vi/N9HBpsUWIMM/mqdefault.jpg');
+}
+
+/* Video 4: JWwZdRixrCI */
+.videos-collage .video-mini[data-video*="JWwZdRixrCI"] {
+    background-image: url('https://img.youtube.com/vi/JWwZdRixrCI/mqdefault.jpg');
+}
+
+/* Video 5: WQcMgyskmWs (Video principal) */
+.videos-collage .video-mini[data-video*="WQcMgyskmWs"] {
+    background-image: url('https://img.youtube.com/vi/WQcMgyskmWs/mqdefault.jpg');
+}
+
+/* Video 6: _vmzlmKVhEQ */
+.videos-collage .video-mini[data-video*="_vmzlmKVhEQ"] {
+    background-image: url('https://img.youtube.com/vi/_vmzlmKVhEQ/mqdefault.jpg');
+}
+
+/* Video 7: J5ZURvYkkWk */
+.videos-collage .video-mini[data-video*="J5ZURvYkkWk"] {
+    background-image: url('https://img.youtube.com/vi/J5ZURvYkkWk/mqdefault.jpg');
+}
+
+/* Video 8: CC5rJa_p82E */
+.videos-collage .video-mini[data-video*="CC5rJa_p82E"] {
+    background-image: url('https://img.youtube.com/vi/CC5rJa_p82E/mqdefault.jpg');
+}
+
+/* Video 9: OJxes3lccWE */
+.videos-collage .video-mini[data-video*="OJxes3lccWE"] {
+    background-image: url('https://img.youtube.com/vi/OJxes3lccWE/mqdefault.jpg');
+}
+
+/* Video 10: mIzU-T379uA */
+.videos-collage .video-mini[data-video*="mIzU-T379uA"] {
+    background-image: url('https://img.youtube.com/vi/mIzU-T379uA/mqdefault.jpg');
+}
+
+/*
+==============================================================
+>>>>> ESTILO PARA EL FONDO DEL VIDEO PRINCIPAL <<<<<
+============================================================== 
+*/
+
+/* La propiedad CSS Custom Property (--video-bg) debe ser actualizada 
+dinámicamente por JavaScript (en script.js) cada vez que se hace clic 
+en una miniatura.
+*/
+
+.videos {
+    /* Establece la imagen de fondo inicial del contenedor principal */
+    --video-bg: url('https://img.youtube.com/vi/WQcMgyskmWs/maxresdefault.jpg'); 
+}
+
+/* Estilos de la página de videos para que el héroe sea más limpio */
+.hero-videos .hero-content {
+    /* Puedes usar esta clase si quieres diferenciar el estilo del hero en la página de videos */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Asegura que el título del video en la sección de videos se vea bien */
+.videos h2 {
+    color: #fff;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+.videos .sub {
+    color: #d4af37;
+    margin-bottom: 25px;
+    font-weight: 400;
+}
+
+/*
+==============================================================
+>>>>> CORRECCIÓN FINAL DE CONSISTENCIA PARA EL MENÚ Y FOOTER <<<<<
+============================================================== 
+*/
+
+/* 1. Ajuste fino del padding del header (Para reducir la altura si es necesario) */
+header {
+    /* Forzamos un poco menos de altura para hacerlo más compacto, si los 25px originales se ven muy grandes */
+    padding: 20px 60px !important; 
+}
+
+/* 2. Ajuste de altura del logo */
+.logo img {
+    /* Forzamos el tamaño del logo para evitar que una posible diferencia lo haga ver "más grande" */
+    height: 55px !important; 
+}
+
+/* 3. Asegurar la visibilidad y color de los encabezados de la sección de videos */
+.videos h2 {
+    color: #fff !important;
+}
+
+.videos .sub {
+    color: #d4af37 !important;
+}
+
+/* El problema de las redes sociales es casi seguro un problema de HTML en el footer de la página de videos 
+(el código que te proporcioné antes). Si usaste el mismo HTML del index, el CSS debe funcionar. 
+Este bloque solo asegura que no haya conflicto en los videos section. */

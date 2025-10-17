@@ -7,7 +7,6 @@
     <title>Biografía Oficial de Johan Castell - Fundador de Castell Records</title>
     <meta name="description" content="Biografía completa de Johan Castell, productor musical, empresario y fundador de Castell Records. Conoce su visión, filosofía y legado en la industria urbana latina.">
     <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48"> 
-
     <link rel="shortcut icon" href="images/favicon.ico"> 
 
     <meta name="google-site-verification" content="R1TUc8IhhDTACJAzv3UDbRBLZpNKR66tWeMEEuU4H_8" />
@@ -126,6 +125,18 @@
         .recommended-list a:hover {
             color: #d4af37;
         }
+        @media (max-width: 768px) {
+            .bio-container {
+                margin: 20px 10px;
+                padding: 15px;
+            }
+            .bio-header h1 {
+                font-size: 2rem;
+            }
+            .bio-content h2, .bio-content h3 {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -150,6 +161,9 @@
     </header>
 
     <main>
+        <section id="login-section" class="auth-section" style="display: none;"></section>
+        <section id="cms-section" class="cms-section" style="display: none;"></section>
+        
         <section class="bio-container">
             <div class="bio-header">
                 <h1>Johan Castell: El Visionario Detrás de Castell Records</h1>

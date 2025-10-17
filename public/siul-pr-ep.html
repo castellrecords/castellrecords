@@ -7,7 +7,6 @@
     <title>¡Nuevo Contrato! Siul PR Lanza su EP "El Origen" | Castell Records Noticias</title>
     <meta name="description" content="Castell Records anuncia el lanzamiento del esperado Extended Play (EP) de Siul PR, titulado 'El Origen'. Conoce más sobre este hito en su carrera.">
     <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48"> 
-
     <link rel="shortcut icon" href="images/favicon.ico"> 
 
     <meta name="google-site-verification" content="R1TUc8IhhDTACJAzv3UDbRBLZpNKR66tWeMEEuU4H_8" />
@@ -104,6 +103,15 @@
         .recommended-list a:hover {
             color: #d4af37;
         }
+        @media (max-width: 768px) {
+            .news-detail-container {
+                margin: 20px 10px;
+                padding: 15px;
+            }
+            .news-detail-header h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,6 +136,9 @@
     </header>
 
     <main>
+        <section id="login-section" class="auth-section" style="display: none;"></section>
+        <section id="cms-section" class="cms-section" style="display: none;"></section>
+
         <section class="news-detail-container">
             <div class="news-detail-header">
                 <h1>¡Nuevo Contrato! Siul PR Lanza su EP "El Origen"</h1>

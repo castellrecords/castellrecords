@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contacto | Castell Records</title>
     <meta name="description" content="Información de contacto y formulario para Castell Records en Medellín.">
+    
     <link rel="icon" type="image/png" href="images/favicon.png" sizes="48x48"> 
-
     <link rel="shortcut icon" href="images/favicon.ico">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -15,6 +15,50 @@
     <link rel="stylesheet" href="style.css" />
     
     <style>
+        .contact-content {
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: left; 
+            padding: 20px;
+        }
+        .contact-hero h1 {
+            font-size: 2.5rem; 
+            color: #000; 
+            text-align: center;
+        }
+        .contact-hero p {
+            color: #666; 
+            margin: 20px 0 40px 0; 
+            text-align: center;
+        }
+        .contact-flex {
+            display: flex; 
+            gap: 40px; 
+            flex-wrap: wrap;
+        }
+        .contact-info {
+            flex: 1; 
+            min-width: 280px;
+        }
+        .contact-form-container {
+            flex: 2; 
+            min-width: 300px;
+        }
+        .contact-info h2, .contact-form-container h2 {
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            margin-top: 30px;
+        }
+        .contact-info p {
+            margin-bottom: 15px; 
+            color: #555;
+        }
+        .contact-info i {
+            color: #d4af37; 
+            margin-right: 10px;
+        }
+        
+        /* Estilos del formulario */
         .contact-form label {
             display: block;
             margin-bottom: 5px;
@@ -30,6 +74,7 @@
             border: 1px solid #ccc;
             border-radius: 6px;
             font-family: 'Poppins', sans-serif;
+            box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
         }
         .contact-form textarea {
             resize: vertical;
@@ -49,12 +94,28 @@
         .contact-form button:hover {
             background-color: #b38f2e;
         }
+        /* Estilos de redes sociales en Contacto (se pueden dejar los del footer o usar estos) */
+        .contact-social a {
+            font-size: 2rem;
+            margin-right: 15px;
+            /* Aquí podrías definir colores específicos si quieres que sean diferentes al footer */
+        }
+        .contact-social .fa-facebook-square { color: #4267B2; }
+        .contact-social .fa-instagram { color: #C13584; }
+        .contact-social .fa-youtube { color: #FF0000; }
+
+        @media (max-width: 768px) {
+            .contact-flex {
+                flex-direction: column;
+            }
+        }
     </style>
 </head>
 <body>
+    
     <header id="main-header">
         <div class="logo">
-            <img src="images/logo.png" alt="Castell Records Logo">
+            <a href="index.html"><img src="images/logo.png" alt="Castell Records Logo"></a>
         </div>
         <nav class="nav-menu">
             <ul>
@@ -67,42 +128,48 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <button id="auth-btn" title="Login / Publicar">
+            <i class="fas fa-user-circle"></i>
+        </button>
     </header>
 
     <main>
-        <section class="hero" style="padding: 60px 20px; text-align: center; background-color: #fff;">
-            <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-                <h1 style="font-size: 2.5rem; color: #000; text-align: center;">Hablemos de tu Música</h1>
-                <p style="color: #666; margin: 20px 0 40px 0; text-align: center;">
+        <section id="login-section" class="auth-section" style="display: none;"></section>
+        <section id="cms-section" class="cms-section" style="display: none;"></section>
+
+        <section class="hero contact-hero" style="background-color: #f9f9f9; padding: 60px 20px;">
+            <div class="contact-content">
+                <h1 class="h1">Hablemos de tu Música</h1>
+                <p>
                     Estamos ubicados en Medellín y listos para escuchar tu propuesta. Escríbenos y te responderemos a la brevedad.
                 </p>
 
-                <div style="display: flex; gap: 40px; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 280px;">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Información Directa</h2>
-                        <p style="margin-bottom: 15px; color: #555;">
-                            <i class="fa-solid fa-map-marker-alt" style="color: #d4af37; margin-right: 10px;"></i>
+                <div class="contact-flex">
+                    <div class="contact-info">
+                        <h2>Información Directa</h2>
+                        <p>
+                            <i class="fa-solid fa-map-marker-alt"></i>
                             **Sede Principal:** Medellín, Antioquia, Colombia.
                         </p>
-                        <p style="margin-bottom: 15px; color: #555;">
-                            <i class="fa-solid fa-envelope" style="color: #d4af37; margin-right: 10px;"></i>
+                        <p>
+                            <i class="fa-solid fa-envelope"></i>
                             **Email:** contacto@castellrecords.com
                         </p>
-                        <p style="margin-bottom: 15px; color: #555;">
-                            <i class="fa-solid fa-phone" style="color: #d4af37; margin-right: 10px;"></i>
+                        <p>
+                            <i class="fa-solid fa-phone"></i>
                             **Teléfono:** +57 300 123 4567
                         </p>
                         
-                        <h2 style="font-size: 1.5rem; margin-top: 30px; margin-bottom: 20px;">Síguenos</h2>
-                        <div style="font-size: 2rem;">
-                            <a href="#" style="color: #4267B2; margin-right: 15px;"><i class="fab fa-facebook-square"></i></a>
-                            <a href="#" style="color: #C13584; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
-                            <a href="#" style="color: #FF0000; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                        <h2 style="margin-top: 30px;">Síguenos</h2>
+                        <div class="contact-social">
+                            <a href="https://www.facebook.com/CastellEmpire" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                            <a href="https://www.instagram.com/castellrecords/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@CastellRecords" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         </div>
                     </div>
 
-                    <div style="flex: 2; min-width: 300px;">
-                        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Envíanos un Mensaje</h2>
+                    <div class="contact-form-container">
+                        <h2>Envíanos un Mensaje</h2>
                         <form class="contact-form">
                             <div>
                                 <label for="name">Nombre Completo</label>
@@ -125,9 +192,26 @@
     </main>
 
     <footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@CastellRecords" target="_blank" aria-label="YouTube Castell Records">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/CastellEmpire" target="_blank" aria-label="Facebook Castell Empire">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/castellrecords/" target="_blank" aria-label="Instagram Castell Records">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/castellrecords/" target="_blank" aria-label="LinkedIn Castell Records">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.tiktok.com/@castellrecords0" target="_blank" aria-label="TikTok Castell Records">
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </div>
         <p>© 2025 Castell Records. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
